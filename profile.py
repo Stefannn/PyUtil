@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 
 sns.set_color_codes("pastel")
 sns.set(style="whitegrid")
+sns.set_context("talk") # bigger fonts etc.
 
 def load_file(filename):
     '''
@@ -27,13 +28,14 @@ def barplot_top_n_functions(df, n, sort_criterium='tot_time'):
     '''
     Barplot of the n most time consuming functions (sorted by sort_criterium)
     df: panda dataframe (e.g. via get_df_from_stats())
+    returns: figure
     '''
     total_time = df['tot_time'].sum()
     data = df.sort(columns=[sort_criterium], ascending=False).iloc[0:n]
     topn_time = data['tot_time'].sum()
     frac_time = topn_time / total_time
 
-    f, ax = plt.subplots()
+    f, ax = plt.subplots(figsize=(10,5))
     sns.barplot(data=data, x=sort_criterium, y='flf', color='b')
     sns.despine(left=True, bottom=True)
     ax.set(ylabel="", xlabel=sort_criterium + " [s]")
@@ -45,6 +47,7 @@ def barplot_top_n_functions(df, n, sort_criterium='tot_time'):
 
     plt.tight_layout()
     plt.show()
+    return f
 
 
 def get_df_from_stats(stats):
