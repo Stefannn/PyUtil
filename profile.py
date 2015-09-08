@@ -47,7 +47,7 @@ def barplot_top_n_functions(df, n, sort_criterium='tot_time', show_std=True):
         errs = None
 
     f, ax = plt.subplots(figsize=(10,5))
-    sns.barplot(data=data, x=s_c, y='flf', color='b', yerr=errs)
+    sns.barplot(data=data, x=s_c, y='flf', color='b', xerr=errs)
     sns.despine(left=True, bottom=True)
     ax.set(ylabel="", xlabel=sort_criterium + " [s]")
     # write the fraction of total time spent in these n functions
