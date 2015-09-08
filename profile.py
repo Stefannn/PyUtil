@@ -7,14 +7,16 @@ python -m cProfile -o output.txt script.py
 from __future__ import division
 import numpy as np
 import pandas as pd
-import seaborn as sns
+try:
+    import seaborn as sns
+    sns.set_color_codes("pastel")
+    sns.set(style="whitegrid")
+    sns.set_context("talk") # bigger fonts etc.
+except:
+    ImportError('seaborn not found, plotting not available')
 import matplotlib.pyplot as plt
 import cProfile
 import pstats
-
-sns.set_color_codes("pastel")
-sns.set(style="whitegrid")
-sns.set_context("talk") # bigger fonts etc.
 
 def load_file(filename):
     '''
