@@ -57,7 +57,6 @@ def barplot_top_n_functions(df, n, sort_criterium='tot_time', show_std=True):
             ha="center", va="center")
 
     plt.tight_layout()
-    plt.show()
     return f
 
 
