@@ -121,4 +121,5 @@ class ProfilerWithStatistics(object):
                 df_tmp = get_df_from_stats(pstats.Stats(pr).strip_dirs())
                 df = pd.concat([df, df_tmp],
                                 ignore_index=True)
-        return df
+
+        return df, pstats.Stats(pr).strip_dirs()
